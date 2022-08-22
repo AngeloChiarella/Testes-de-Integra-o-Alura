@@ -27,11 +27,11 @@ public class LoginTest {
 
 	@Test
 	public void efetuarLoginComDadosValidos() {
-
 		paginaDeLogin.preencheFormularioLogin("fulano", "pass");
 		paginaDeLogin.efetuaLogin();
-		Assert.assertFalse(paginaDeLogin.isUrlLogin());
+		
 		Assert.assertEquals("fulano", paginaDeLogin.getNomeUsuarioLogado());
+		Assert.assertFalse(paginaDeLogin.isUrlLogin());
 	}
 
 	@Test

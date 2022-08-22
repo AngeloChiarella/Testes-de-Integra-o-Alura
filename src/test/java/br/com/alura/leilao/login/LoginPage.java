@@ -52,12 +52,3 @@ public class LoginPage extends PageObject {
 	}
 
 }
-
-//.findElement - encontrar elemento no browser
-//By - referenciar elemento html - n precisa estanciar - recomendado usar id
-//.id - do imput "username" e "password"
-//.sendKeys - escrever no campo input
-//.submit - submeter um formulario
-//.getText - recuperar o texto de um elemento
-//.getPageSource - devolve string com todo codigo fonte da pag
-//.assertThrows - verificar qual exception e chamada
