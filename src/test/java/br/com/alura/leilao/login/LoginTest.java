@@ -5,10 +5,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class LoginTest {
 
@@ -55,6 +51,6 @@ public class LoginTest {
 		paginaDeLogin.navegaPagLances();
 
 		Assert.assertTrue(paginaDeLogin.isUrlLogin());
-		Assert.assertFalse(paginaDeLogin.contemTexto("Dados do Leilão")); // nao conter dadosdoleilao
+		Assert.assertFalse(paginaDeLogin.contemTexto("Dados do Leilão"));
 	}
 }

@@ -2,25 +2,19 @@ package br.com.alura.leilao.login;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LoginPage {
+import br.com.alura.leilao.PageObject;
+import br.com.alura.leilao.leiloes.LeiloesPage;
 
-	private WebDriver browser;
+public class LoginPage extends PageObject {
 
-	private String loginUrl = "http://localhost:8080/login";
-	private String leiloesUrl = "http://localhost:8080/leiloes/2";
-	private String loginUrlError = "http://localhost:8080/login?error";
+	private static final String URL_LOGIN = "http://localhost:8080/login";
+	private static final String URL_LEILAO = "http://localhost:8080/leiloes/2";
+	private static final String URL_LOGIN_ERR = "http://localhost:8080/login?error";
 
 	public LoginPage() {
-		System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-		this.browser = new ChromeDriver();
-		this.browser.navigate().to(loginUrl);
-	}
-
-	public void fechar() {
-		this.browser.quit();
+		super(null);
+		this.browser.navigate().to(URL_LOGIN);
 	}
 
 	public void preencheFormularioLogin(String username, String password) {
@@ -28,16 +22,17 @@ public class LoginPage {
 		browser.findElement(By.id("password")).sendKeys(password);
 	}
 
-	public void efetuaLogin() {
+	public LeiloesPage efetuaLogin() {
 		browser.findElement(By.id("login-form")).submit();
+		return new LeiloesPage(browser);
 	}
 
 	public boolean isUrlLogin() {
-		return browser.getCurrentUrl().equals(loginUrl);
+		return browser.getCurrentUrl().equals(URL_LOGIN);
 	}
 
 	public boolean isUrlLoginError() {
-		return browser.getCurrentUrl().equals(loginUrlError);
+		return browser.getCurrentUrl().equals(URL_LOGIN_ERR);
 	}
 
 	public Object getNomeUsuarioLogado() {
@@ -49,13 +44,12 @@ public class LoginPage {
 	}
 
 	public void navegaPagLances() {
-		browser.navigate().to(leiloesUrl);
+		browser.navigate().to(URL_LEILAO);
 	}
 
 	public boolean contemTexto(String texto) {
 		return browser.getPageSource().contains(texto);
 	}
-
 
 }
 
